@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <select id="findUserById" parameterType="int" resultType="com.arthur.pojo.User">
+        SELECT * FROM user WHERE id = #{value}
+    </select>
+
+    <select id="findByUserName" parameterType="java.lang.String" resultType="com.arthur.pojo.User">
+        SELECT * FROM user WHERE username like "%"#{value}"%"
+    </select>
+    
+    <insert id="insertUser" parameterType="com.arthur.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (username, birthday, sex, address) values (#{username}, #{birthday}, #{sex}, #{address})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM user WHERE id = #{value}
+    </delete>
+
+    <update id="updateUserById" parameterType="com.arthur.pojo.User">
+        UPDATE user SET username = #{username} WHERE id = #{id}
+    </update>
+</mapper>
