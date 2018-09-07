@@ -32,6 +32,7 @@ public class MyBatisTest {
         String resource = "SqlMapConfig.xml";
         InputStream is = Resources.getResourceAsStream(resource);
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+        sqlSession = sqlSessionFactory.openSession();
     }
 
     @Test
