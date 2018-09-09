@@ -1,11 +1,22 @@
 package com.arthur.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserDTO {
     private Integer id;
     private String username;
     private Date birthday_;
+
+    private List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public Integer getId() {
         return id;

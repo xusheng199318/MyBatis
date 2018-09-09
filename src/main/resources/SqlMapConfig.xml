@@ -18,6 +18,6 @@
 
     <mappers>
         <!--<mapper resource="com/arthur/dao/UserMapper.xml"/>-->
-        <package name="com.arthur.dao"/>
+        <package name="com.arthur"/>
     </mappers>
 </configuration>
