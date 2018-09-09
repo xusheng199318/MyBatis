@@ -24,15 +24,21 @@ import java.util.List;
  */
 public class MyBatisTest {
 
-    private SqlSessionFactory sqlSessionFactory;
     private SqlSession sqlSession;
 
     @Before
     public void init() throws IOException {
         String resource = "SqlMapConfig.xml";
         InputStream is = Resources.getResourceAsStream(resource);
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         sqlSession = sqlSessionFactory.openSession();
+    }
+
+    @After
+    public void destroy() {
+        if (sqlSession != null) {
+            sqlSession.close();
+        }
     }
 
     @Test
@@ -75,10 +81,5 @@ public class MyBatisTest {
         sqlSession.commit();
     }
 
-    @After
-    public void destroy() {
-        if (sqlSession != null) {
-            sqlSession.close();
-        }
-    }
+
 }

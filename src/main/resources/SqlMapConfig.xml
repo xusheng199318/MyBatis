@@ -17,6 +17,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/arthur/mybatis/UserMapper.xml"/>
+        <!--<mapper resource="com/arthur/dao/UserMapper.xml"/>-->
+        <package name="com.arthur.dao"/>
     </mappers>
 </configuration>
