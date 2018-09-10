@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arthur.lazyloading.OrderMapper">
+
+    <select id="findUserById" parameterType="int" resultType="com.arthur.pojo.User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <resultMap type="com.arthur.pojo.Order" id="orderUser">
+        <id column="id" property="id" />
+        <result column="user_id" property="user_id" />
+        <result column="number" property="number" />
+        <result column="note" property="note" />
+        <!-- 一对一关联映射 -->
+        <!-- property:Orders对象的user属性 javaType：user属性对应 的类型 -->
+        <!-- select 属性：加载完主信息之后，会根据延迟加载策略，去调用select属性指定的statementID -->
+        <!-- column属性：表示将主查询结果集中指定列的结果取出来，作为参数，传递给select属性的statement中 -->
+        <association property="user" fetchType="lazy"
+                     javaType="com.arthur.pojo.User" column="user_id"
+                     select="com.arthur.lazyloading.OrderMapper.findUserById"></association>
+    </resultMap>
+
+    <select id="findOrdersAndUser"
+            resultMap="orderUser">
+        SELECT
+          o.id,
+          o.user_id,
+          o.number,
+          o.note
+        FROM
+          orders o
+        WHERE
+          o.id = #{id}
+    </select>
+
+</mapper>
