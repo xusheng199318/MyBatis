@@ -1,11 +1,12 @@
 package com.arthur.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by xusheng on 2018/9/4.
  */
-public class User {
+public class User implements Serializable{
 
     private int id;
     private String username;
