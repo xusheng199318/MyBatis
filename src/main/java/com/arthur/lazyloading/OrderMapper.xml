@@ -17,7 +17,7 @@
         <!-- property:Orders对象的user属性 javaType：user属性对应 的类型 -->
         <!-- select 属性：加载完主信息之后，会根据延迟加载策略，去调用select属性指定的statementID -->
         <!-- column属性：表示将主查询结果集中指定列的结果取出来，作为参数，传递给select属性的statement中 -->
-        <association property="user" fetchType="lazy"
+        <association property="user"
                      javaType="com.arthur.pojo.User" column="user_id"
                      select="com.arthur.lazyloading.OrderMapper.findUserById"></association>
     </resultMap>

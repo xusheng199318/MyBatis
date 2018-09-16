@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface OrderMapper {
 
-    List<Order> getOrderList();
+    /*List<Order> getOrderList();
 
     List<UserDTO> getUserOrderList();
 
-    Order getOrderById(Integer orderId);
+    Order getOrderById(Integer orderId);*/
 
     User getUserById(Integer userId);
 

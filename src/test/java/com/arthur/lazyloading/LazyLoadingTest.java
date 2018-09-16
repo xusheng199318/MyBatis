@@ -38,6 +38,12 @@ public class LazyLoadingTest {
     }
 
     @Test
+    public void testDefault() {
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        Order ordersAndUser = orderMapper.findOrdersAndUser(3);
+    }
+
+    @Test
     public void testAggressiveLazyLoading() {
         OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
         Order ordersAndUser = orderMapper.findOrdersAndUser(3);
@@ -48,7 +54,7 @@ public class LazyLoadingTest {
     public void testDeepLazyLoading() {
         OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
         Order ordersAndUser = orderMapper.findOrdersAndUser(3);
-        System.out.println(ordersAndUser);
+        System.out.println(ordersAndUser.getUser());
     }
 
 }
