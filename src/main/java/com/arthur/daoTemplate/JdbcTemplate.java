@@ -25,18 +25,7 @@ public abstract class JdbcTemplate<T> {
         ResultSet resultSet = null;
         Connection connection = createConnection();
         T t = doQuery(connection, param);
-        closeResource(connection, preparedStatement, resultSet);
         return t;
-    }
-
-    private void closeResource(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
-        try {
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     protected abstract T doQuery(Connection connection, String param);
