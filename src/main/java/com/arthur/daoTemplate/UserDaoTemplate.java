@@ -11,13 +11,13 @@ import java.sql.ResultSet;
 public class UserDaoTemplate<T> extends JdbcTemplate {
 
     @Override
-    public Object doQuery(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet, String param) {
+    public Object doQuery(Connection connection, String param) {
         T user = null;
         String sql = "SELECT * FROM user WHERE username = ?";
         try {
-            preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, param);
-            resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 user = (T) new com.arthur.pojo.User()
                         .id(resultSet.getInt("id"))

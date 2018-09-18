@@ -24,7 +24,7 @@ public abstract class JdbcTemplate<T> {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         Connection connection = createConnection();
-        T t = doQuery(connection, preparedStatement, resultSet, param);
+        T t = doQuery(connection, param);
         closeResource(connection, preparedStatement, resultSet);
         return t;
     }
@@ -39,7 +39,7 @@ public abstract class JdbcTemplate<T> {
         }
     }
 
-    protected abstract T doQuery(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet, String param);
+    protected abstract T doQuery(Connection connection, String param);
 
 
 
